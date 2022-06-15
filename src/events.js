@@ -2,14 +2,14 @@ import {defined, callback} from 'chart.js/helpers';
 import {getElements} from './interaction';
 import {toPosition} from './helpers/helpers.options';
  //test
-const moveHooks = ['enter', 'leave','click'];
+const moveHooks = ['enter', 'leave'];
 
 /**
  * @typedef { import("chart.js").Chart } Chart
  * @typedef { import('../../types/options').AnnotationPluginOptions } AnnotationPluginOptions
  */
 
-export const hooks = moveHooks.concat('mousedown');
+export const hooks = moveHooks.concat('click');
 
 
 /**
