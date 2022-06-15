@@ -23,4 +23,5 @@ export interface AnnotationEvents {
   enter?(context: EventContext, event: ChartEvent): boolean | void,
   leave?(context: EventContext, event: ChartEvent): boolean | void,
   click?(context: EventContext, event: ChartEvent): boolean | void,
+  drag?(context: EventContext, event: ChartEvent): boolean | void,
 }
