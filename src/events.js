@@ -122,7 +122,7 @@ function handleClickEvents(state, event, options) {
   const elements = getElements(state, event, options.interaction);
   let changed;
   for (const element of elements) {
-    changed = debug(element.options.click || listeners.click, element, event) || changed;
+    changed = dragpos(element.options.click || listeners.click, element, event) || changed;
   }
   return changed;
 }
