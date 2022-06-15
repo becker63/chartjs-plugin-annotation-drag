@@ -1,16 +1,16 @@
 {
-  "name": "chartjs-plugin-annotation",
+  "name": "chartjs-plugin-annotation-drag2",
   "homepage": "https://www.chartjs.org/chartjs-plugin-annotation/index",
   "description": "Annotations for Chart.js",
-  "version": "1.4.0",
-  "author": "Evert Timberg <evert.timberg@gmail.com>",
+  "version": "1.0.2",
+  "author": "Taylor Johnson",
   "license": "MIT",
   "main": "dist/chartjs-plugin-annotation.js",
   "module": "dist/chartjs-plugin-annotation.esm.js",
   "types": "types/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/chartjs/chartjs-plugin-annotation.git"
+    "url": "https://github.com/becker63/chartjs-plugin-annotation-drag"
   },
   "files": [
     "dist/*.js",

@@ -1,16 +1,14 @@
 import {defined, callback} from 'chart.js/helpers';
 import {getElements} from './interaction';
-import {toPosition} from './helpers/helpers.options';
- //test
-const moveHooks = ['enter', 'leave','click'];
+
+const moveHooks = ['enter', 'leave'];
 
 /**
  * @typedef { import("chart.js").Chart } Chart
  * @typedef { import('../../types/options').AnnotationPluginOptions } AnnotationPluginOptions
  */
 
-export const hooks = moveHooks.concat('mousedown');
-
+export const hooks = moveHooks.concat('click');
 
 /**
  * @param {Chart} chart
@@ -24,23 +22,12 @@ export function updateListeners(chart, state, options) {
 
   hooks.forEach(hook => {
     if (typeof options[hook] === 'function') {
-      console.log(options)
       state.listened = true;
       state.listeners[hook] = options[hook];
     } else if (defined(state.listeners[hook])) {
       delete state.listeners[hook];
     }
   });
-
-  draghook.forEach(hook => {
-    if (typeof options[hook] === 'function') {
-      state.listened = true;
-      state.listeners[hook] = options[hook];
-    } else if (defined(state.listeners[hook])) {
-      delete state.listeners[hook];
-    }
-  });
-
   moveHooks.forEach(hook => {
     if (typeof options[hook] === 'function') {
       state.moveListened = true;
@@ -78,8 +65,6 @@ export function handleEvent(state, event, options) {
       return handleMoveEvents(state, event, options);
     case 'click':
       return handleClickEvents(state, event, options);
-    case 'mousedown':
-      return handleDragEvents(state, event, options);
     default:
     }
   }
@@ -93,7 +78,6 @@ function handleMoveEvents(state, event, options) {
   let elements;
 
   if (event.type === 'mousemove') {
-    //gets element underneath mouse event 
     elements = getElements(state, event, options.interaction);
   } else {
     elements = [];
@@ -122,27 +106,9 @@ function handleClickEvents(state, event, options) {
   const elements = getElements(state, event, options.interaction);
   let changed;
   for (const element of elements) {
-    changed = debug(element.options.click || listeners.click, element, event) || changed;
+    changed = dispatchEvent(element.options.click || listeners.click, element, event) || changed;
   }
   return changed;
-}
-
-function handleDragEvents(state, event, options) {
-  const listeners = state.listeners;
-  const elements = getElements(state, event, options.interaction);
-  let changed;
-  for (const element of elements) {
-    changed = dragpos(element.options.mousedown || listeners.mousedown, element, event) || changed;
-  }
-  return changed;
-}
-
-function dragpos(handler, element, event){
-  console.log(handler, '\n', element, '\n', event, '\n')
-}
-
-function debug(handler, element, event){
-  console.log('handler: ', handler, '\nelement: ', element, '\nevent: ', event)
 }
 
 function dispatchEvent(handler, element, event) {
