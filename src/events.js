@@ -2,7 +2,7 @@ import {defined, callback} from 'chart.js/helpers';
 import {getElements} from './interaction';
 import {toPosition} from './helpers/helpers.options';
  //test
-const moveHooks = ['enter', 'leave'];
+const moveHooks = ['enter', 'leave','mousedown'];
 
 /**
  * @typedef { import("chart.js").Chart } Chart
@@ -10,8 +10,6 @@ const moveHooks = ['enter', 'leave'];
  */
 
 export const hooks = moveHooks.concat('click');
-
-
 
 
 
