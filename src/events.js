@@ -11,7 +11,7 @@ const moveHooks = ['enter', 'leave'];
 
 export const hooks = moveHooks.concat('click');
 
-const draghooks = draghooks.concat('mousedown')
+
 
 
 
