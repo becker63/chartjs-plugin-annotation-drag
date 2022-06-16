@@ -84,6 +84,7 @@ if __name__ == '__main__':
             pushnpm()
     except IndexError:
         if (checkiflatest() == 0):
+            build()
             version = iterateversion()
             prettypushtogithub(version)
             pushnpm()
