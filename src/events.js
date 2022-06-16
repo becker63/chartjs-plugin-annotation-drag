@@ -146,5 +146,6 @@ function debug(handler, element, event){
 }
 
 function dispatchEvent(handler, element, event) {
+  debug(handler, element, event);
   return callback(handler, [element.$context, event]) === true;
 }
