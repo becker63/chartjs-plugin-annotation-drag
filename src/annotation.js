@@ -91,7 +91,10 @@ export default {
     if (handleEvent(state, args.event, options)) {
       args.changed = true;
     }
-    console.log('\n\noptions:\n\n', options, '\n\nargs:\n\n', args, '\n\nstate1:\n\n', state);
+
+    if(args.event.type == 'click'){
+      console.log('\n\noptions:\n\n', options, '\n\nargs:\n\n', args, '\n\nstate:\n\n', state);
+    }
   },
 
   destroy(chart) {
