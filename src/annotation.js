@@ -64,10 +64,10 @@ export default {
 
   afterUpdate(chart, args, options) {
     const state = chartStates.get(chart);
-    console.log('\n\noptions:', options, '\n\nargs: ', args, '\n\nchart: ', chart)
     updateListeners(chart, state, options);
     updateElements(chart, state, options, args.mode);
     state.visibleElements = state.elements.filter(el => !el.skip && el.options.display);
+    console.log('\n\noptions:\n\n', options, '\n\nargs:\n\n', args, '\n\nchart:\n\n', chart);
   },
 
   beforeDatasetsDraw(chart, _args, options) {
