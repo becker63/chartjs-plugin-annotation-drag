@@ -67,7 +67,7 @@ export default {
     updateListeners(chart, state, options);
     updateElements(chart, state, options, args.mode);
     state.visibleElements = state.elements.filter(el => !el.skip && el.options.display);
-    console.log('\n\noptions:\n\n', options, '\n\nargs:\n\n', args, '\n\nchart:\n\n', chart);
+    console.log('\n\noptions:\n\n', options, '\n\nargs:\n\n', args, '\n\nstate:\n\n', state);
   },
 
   beforeDatasetsDraw(chart, _args, options) {
