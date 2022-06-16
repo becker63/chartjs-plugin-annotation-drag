@@ -24,9 +24,9 @@ export function updateListeners(chart, state, options) {
 
   hooks.forEach(hook => {
     if (typeof options[hook] === 'function') {
-      console.log(options)
       state.listened = true;
       state.listeners[hook] = options[hook];
+      console.log(hook)
     } else if (defined(state.listeners[hook])) {
       delete state.listeners[hook];
     }
@@ -142,6 +142,5 @@ function dragpos(handler, element, event){
 }
 
 function dispatchEvent(handler, element, event) {
-  console.log(handler, element, event);
   return callback(handler, [element.$context, event]) === true;
 }
