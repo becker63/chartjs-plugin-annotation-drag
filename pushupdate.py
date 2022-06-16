@@ -40,6 +40,10 @@ clock =  ['-','\\','|','/']
 @animation.wait() 
 def commitgit(commitname):
     cmd('commiting files...', "git commit -m '" + commitname + "'")
+    
+@animation.wait() 
+def build():
+    cmd('building files...', "yarn build")
 
 @animation.wait() 
 def addgit():
@@ -75,6 +79,7 @@ def checkiflatest():
 if __name__ == '__main__':
     try:
         if (sys.argv[1] == '--npm'):
+            build()
             iterateversion()
             pushnpm()
     except IndexError:
