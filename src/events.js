@@ -26,16 +26,8 @@ export function updateListeners(chart, state, options) {
     if (typeof options[hook] === 'function') {
       state.listened = true;
       state.listeners[hook] = options[hook];
+      console.log(options)
       console.log(hook)
-    } else if (defined(state.listeners[hook])) {
-      delete state.listeners[hook];
-    }
-  });
-
-  draghook.forEach(hook => {
-    if (typeof options[hook] === 'function') {
-      state.listened = true;
-      state.listeners[hook] = options[hook];
     } else if (defined(state.listeners[hook])) {
       delete state.listeners[hook];
     }
