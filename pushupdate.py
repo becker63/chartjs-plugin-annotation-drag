@@ -79,13 +79,13 @@ def checkiflatest():
 if __name__ == '__main__':
     try:
         if (sys.argv[1] == '--npm'):
-            build()
             iterateversion()
+            build()
             pushnpm()
     except IndexError:
         if (checkiflatest() == 0):
-            build()
             version = iterateversion()
+            build()
             prettypushtogithub(version)
             pushnpm()
     print(colored("\nFinished.",'magenta'))
