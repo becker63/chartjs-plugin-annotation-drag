@@ -25,7 +25,8 @@ export default {
   afterUnregister() {
     Chart.unregister(annotationTypes);
   },
-
+  // Chartjs chart object.. found through grep search
+  //          \/
   beforeInit(chart) {
     chartStates.set(chart, {
       annotations: [],
@@ -39,6 +40,7 @@ export default {
   },
 
   beforeUpdate(chart, args, options) {
+    //javascript proxy trap   \/ '.get'
     const state = chartStates.get(chart);
     const annotations = state.annotations = [];
 
@@ -67,7 +69,6 @@ export default {
     updateListeners(chart, state, options);
     updateElements(chart, state, options, args.mode);
     state.visibleElements = state.elements.filter(el => !el.skip && el.options.display);
-    console.log('\n\noptions:\n\n', options, '\n\nargs:\n\n', args, '\n\nstate1:\n\n', state);
   },
 
   beforeDatasetsDraw(chart, _args, options) {
@@ -93,7 +94,7 @@ export default {
     }
 
     if(args.event.type == 'click'){
-      console.log('\n\noptions:\n\n', options, '\n\nargs:\n\n', args, '\n\nstate:\n\n', state);
+      console.log('\n\noptions:\n', options, '\n\nargs:\n', args, '\n\nstate:\n', state, '\n\nchart:\n',chart);
     }
   },
 

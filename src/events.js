@@ -27,6 +27,7 @@ export function updateListeners(chart, state, options) {
   hooks.forEach(hook => {
     if (typeof options[hook] === 'function') {
       state.listened = true;
+      // \/ proxy objects
       state.listeners[hook] = options[hook];
     } else if (defined(state.listeners[hook])) {
       delete state.listeners[hook];
