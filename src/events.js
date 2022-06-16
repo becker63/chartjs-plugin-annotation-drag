@@ -141,11 +141,7 @@ function dragpos(handler, element, event){
   console.log(handler, '\n', element, '\n', event, '\n')
 }
 
-function debug(handler, element, event){
-  console.log('handler: ', handler, '\nelement: ', element, '\nevent: ', event)
-}
-
 function dispatchEvent(handler, element, event) {
-  debug(handler, element, event);
+  console.log(handler, element, event);
   return callback(handler, [element.$context, event]) === true;
 }

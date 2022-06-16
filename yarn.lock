@@ -2738,6 +2738,13 @@ chartjs-plugin-annotation-drag2@^1.1.7:
   dependencies:
     chartjs-plugin-annotation-drag2 "^1.1.6"
 
+chartjs-plugin-annotation-drag2@^1.1.8:
+  version "1.1.8"
+  resolved "https://registry.yarnpkg.com/chartjs-plugin-annotation-drag2/-/chartjs-plugin-annotation-drag2-1.1.8.tgz#5560f7e5e806272d9975fd6eb68e9559692a2cde"
+  integrity sha512-Qn7TusnekPlkWAXgPEjR5MVJvlHKxYgqJ7AoGqJw32JghT1iautunQ/OwZHSpc1j7h3+WwqEzfMtd7umI5owiw==
+  dependencies:
+    chartjs-plugin-annotation-drag2 "^1.1.7"
+
 chartjs-plugin-autocolors@^0.0.5:
   version "0.0.5"
   resolved "https://registry.yarnpkg.com/chartjs-plugin-autocolors/-/chartjs-plugin-autocolors-0.0.5.tgz#dc7ad3436776f8da1b8cbbb214509f94d966c3da"

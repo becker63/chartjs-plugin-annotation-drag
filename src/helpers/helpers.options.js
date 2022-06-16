@@ -71,11 +71,6 @@ export function toPosition(value) {
       y: valueOrDefault(value.y, 'center'),
     };
   }
-  value = valueOrDefault(value, 'center');
-  return {
-    x: value,
-    y: value
-  };
 }
 
 /**
