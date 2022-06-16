@@ -64,7 +64,7 @@ export default {
 
   afterUpdate(chart, args, options) {
     const state = chartStates.get(chart);
-    console.log('options:', options, 'args: ', args, 'chart: ', chart)
+    console.log('\noptions:', options, '\nargs: ', args, '\nchart: ', chart)
     updateListeners(chart, state, options);
     updateElements(chart, state, options, args.mode);
     state.visibleElements = state.elements.filter(el => !el.skip && el.options.display);
