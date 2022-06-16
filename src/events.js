@@ -11,6 +11,10 @@ const moveHooks = ['enter', 'leave'];
 
 export const hooks = moveHooks.concat('click');
 
+export const draghooks = draghooks.concat('mousedown')
+
+
+
 
 /**
  * @param {Chart} chart
@@ -26,8 +30,6 @@ export function updateListeners(chart, state, options) {
     if (typeof options[hook] === 'function') {
       state.listened = true;
       state.listeners[hook] = options[hook];
-      console.log(options)
-      console.log(hook)
     } else if (defined(state.listeners[hook])) {
       delete state.listeners[hook];
     }
@@ -39,21 +41,6 @@ export function updateListeners(chart, state, options) {
     }
   });
 
-  if (!state.listened || !state.moveListened) {
-    state.annotations.forEach(scope => {
-      if (!state.listened && typeof scope.click === 'function') {
-        state.listened = true;
-      }
-      if (!state.moveListened) {
-        moveHooks.forEach(hook => {
-          if (typeof scope[hook] === 'function') {
-            state.listened = true;
-            state.moveListened = true;
-          }
-        });
-      }
-    });
-  }
 }
 
 /**
