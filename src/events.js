@@ -11,7 +11,7 @@ const moveHooks = ['enter', 'leave'];
 
 export const hooks = moveHooks.concat('click');
 
-
+const draghooks = draghooks.concat('mousedown')
 
 
 
@@ -41,6 +41,22 @@ export function updateListeners(chart, state, options) {
     }
   });
 
+  if (!state.listened || !state.moveListened) {
+    state.annotations.forEach(scope => {
+      // \/ why is this negated?
+      if (!state.listened && typeof scope.click === 'function') {
+        state.listened = true;
+      }
+      if (!state.moveListened) {
+        moveHooks.forEach(hook => {
+          if (typeof scope[hook] === 'function') {
+            state.listened = true;
+            state.moveListened = true;
+          }
+        });
+      }
+    });
+  }
 }
 
 /**
