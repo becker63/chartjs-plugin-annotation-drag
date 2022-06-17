@@ -19,15 +19,17 @@ export const hooks = moveHooks.concat('click');
  * @param {Object} state
  * @param {AnnotationPluginOptions} options
  */
+// This is ran every time the mouse updates, clicking and movement. 
 export function updateListeners(chart, state, options) {
   state.listened = false;
   state.moveListened = false;
   state._getElements = getElements; // for testing
 
   hooks.forEach(hook => {
+    //this checks if 
     if (typeof options[hook] === 'function') {
       state.listened = true;
-      // \/ proxy objects
+      // \/ proxy object
       state.listeners[hook] = options[hook];
     } else if (defined(state.listeners[hook])) {
       delete state.listeners[hook];

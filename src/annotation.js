@@ -9,6 +9,10 @@ import {version} from '../package.json';
 
 const chartStates = new Map();
 
+// Note, strange javascript 'Proxy' objects are everywhere Ill try to note them But I barely understand them yet. 
+
+//Also note, there are two diffrent versions of 'get' and 'set', they can be proxy object 'traps' or map datatype functions. In this case these are map functions
+
 export default {
   id: 'annotation',
 
@@ -25,13 +29,15 @@ export default {
   afterUnregister() {
     Chart.unregister(annotationTypes);
   },
-  // Chartjs chart object.. found through grep search
+  // full Chartjs Chart object.. found through grep search
+  // Its thick.. 
   //          \/
   beforeInit(chart) {
     chartStates.set(chart, {
       annotations: [],
       elements: [],
       visibleElements: [],
+      //  \/  proxy object
       listeners: {},
       listened: false,
       moveListened: false,
@@ -40,7 +46,6 @@ export default {
   },
 
   beforeUpdate(chart, args, options) {
-    //javascript proxy trap   \/ '.get'
     const state = chartStates.get(chart);
     const annotations = state.annotations = [];
 
@@ -94,7 +99,8 @@ export default {
     }
 
     if(args.event.type == 'click'){
-      console.log('\n\noptions:\n', options, '\n\nargs:\n', args, '\n\nstate:\n', state, '\n\nchart:\n',chart);
+
+      console.log('\n\noptions:',typeof(options),'\n', options, '\n\nargs:',typeof(args),'\n', args, '\n\nstate:',typeof(state),'\n', state, '\n\nchart:',typeof(chart),'\n', chart);
     }
   },
 
