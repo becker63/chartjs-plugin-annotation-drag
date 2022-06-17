@@ -1,37 +1,14 @@
-# chartjs-plugin-annotation.js
+1. everytime the mouse updates a function called ***updateListeners*** is called with 3 variables passed to it, these are passed everywhere throughout the lib:
+    1. state: whether the annotation line has been clicked on or moved over 
+    2. args.event: what event has been detected
+    3. options: chart options
 
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/chartjs/chartjs-plugin-annotation/Node.js%20CI)](https://github.com/chartjs/chartjs-plugin-annotation/actions/workflows/ci.yml)
-[![Coverage Status](https://coveralls.io/repos/github/chartjs/chartjs-plugin-annotation/badge.svg?branch=master)](https://coveralls.io/github/chartjs/chartjs-plugin-annotation?branch=master)
-[![release](https://img.shields.io/github/v/release/chartjs/chartjs-plugin-annotation?include_prereleases)](https://github.com/chartjs/chartjs-plugin-annotation/releases)
-[![npm (latest)](https://img.shields.io/npm/v/chartjs-plugin-annotation/latest)](https://www.npmjs.com/package/chartjs-plugin-annotation/v/latest)
-[![documentation](https://img.shields.io/static/v1?message=Documentation&color=informational)](https://www.chartjs.org/chartjs-plugin-annotation/index)
-<a href="https://github.com/chartjs/awesome"><img src="https://awesome.re/badge-flat2.svg" alt="Awesome"></a>
+2. this does some stuff to check in your annotation options what event you have selected to detect
 
-An annotation plugin for Chart.js >= 3.7.0
+3. then a function called ***handleEvent*** is called with the same options passed as updatelistener
 
----
-> This plugin needs to be registered. It does not function as inline plugin.
----
+4. ***handleEvent*** sends you off to one of 2 functions depending on if its a mouseover or click: ***handleMoveEvents*** and ***handleClickEvents***.  ***handleMoveEvents*** is a little weirder but it all ends up going to what you see in step 4
 
-For Chart.js 3.0.0 to 3.6.2 support, use [version 1.4.0 of this plugin](https://github.com/chartjs/chartjs-plugin-annotation/releases/tag/v1.4.0)
-For Chart.js 2.4.0 to 2.9.x support, use [version 0.5.7 of this plugin](https://github.com/chartjs/chartjs-plugin-annotation/releases/tag/v0.5.7)
+5. **MORE WORK NEEDED**: both ***handleMoveEvents*** and ***handleClickEvents*** pass a parameter to a function called ***getElements*** called **options.interaction** depending on the type of event (mouseover or mouseclick). These find whatever element the user is selecting and depending on this element the method to find that will be diffrent, for example 'mouseclick' does a 'getnearest' mode. Problem is I have no idea where this 'interaction' param is being generated.
 
-This plugin draws lines, boxes, points, labels, polygons and ellipses on the chart area.
-
-Annotations work with line, bar, scatter and bubble charts that use linear, logarithmic, time, or category scales. Annotations will not work on any chart that does not have exactly two axes, including pie, radar, and polar area charts.
-
-![Example Screenshot](docs/guide/banner.png)
-
-[View this example](https://www.chartjs.org/chartjs-plugin-annotation/latest/samples/intro.html)
-
-## Documentation
-
-You can find documentation for chartjs-plugin-annotation at [www.chartjs.org/chartjs-plugin-annotation](https://www.chartjs.org/chartjs-plugin-annotation/index).
-
-## Contributing
-
-Before submitting an issue or a pull request to the project, please take a moment to look over the [contributing guidelines](CONTRIBUTING.md) first.
-
-## License
-
-Chart.Annotation.js is available under the [MIT license](LICENSE.md).
+6. Now with what annotation the user has touched from ***getElements*** which executes the function found in there annotation options, and allows you to pass along the options of your chart to be changed.
