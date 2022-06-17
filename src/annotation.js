@@ -71,6 +71,9 @@ export default {
 
   afterUpdate(chart, args, options) {
     const state = chartStates.get(chart);
+    // state: whether the chart has been clicked on or moved over
+    // args.event: what event has been detected
+    // options: chart options
     updateListeners(chart, state, options);
     updateElements(chart, state, options, args.mode);
     state.visibleElements = state.elements.filter(el => !el.skip && el.options.display);

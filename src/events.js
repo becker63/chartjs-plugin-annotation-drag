@@ -26,7 +26,7 @@ export function updateListeners(chart, state, options) {
   state._getElements = getElements; // for testing
 
   hooks.forEach(hook => {
-    //this checks if 
+    //this checks if the user has set the click event in there annotations options
     if (typeof options[hook] === 'function') {
       state.listened = true;
       // \/ proxy object
@@ -35,16 +35,16 @@ export function updateListeners(chart, state, options) {
       delete state.listeners[hook];
     }
   });
-
+  //same check as above for movement
   moveHooks.forEach(hook => {
     if (typeof options[hook] === 'function') {
       state.moveListened = true;
     }
   });
 
+  // literally the same thing as the two foreaches above but goes over the annotations options thats nested inside the of the state object, I have no idea why this exists but if you remove it, things break
   if (!state.listened || !state.moveListened) {
     state.annotations.forEach(scope => {
-      // \/ why is this negated?
       if (!state.listened && typeof scope.click === 'function') {
         state.listened = true;
       }
@@ -138,5 +138,14 @@ function dragpos(handler, element, event){
 }
 
 function dispatchEvent(handler, element, event) {
+  /**
+ * Calls `fn` with the given `args` in the scope defined by `thisArg` and returns the
+ * value returned by `fn`. If `fn` is not a function, this method returns undefined.
+ * @param fn - The function to call.
+ * @param args - The arguments with which `fn` should be called.
+ * @param [thisArg] - The value of `this` provided for the call to `fn`.
+ * @returns {*}
+ */
   return callback(handler, [element.$context, event]) === true;
 }
+//that dollar sign isnt doing anything weird, its just a valid variable charecter, its old jquery stuff, heres an article.. https://web.archive.org/web/20160529121559/http://www.authenticsociety.com/blog/javascript_dollarsign

@@ -1,0 +1,1 @@
+first within annotations.js a function called handleevent through  is called every time the mouse updates on the chart
