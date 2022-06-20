@@ -101,7 +101,7 @@ export default {
       args.changed = true;
     }
 
-    for (let i = 140; i != 270; i++)
+    for (let i = 170; i != 190; i++)
       if (parseInt(i) == args.event.x){
       console.log('\n\noptions:',typeof(options),'\n', options, '\n\nargs:',typeof(args),'\n', args, '\n\nstate:',typeof(state),'\n', state, '\n\nchart:',typeof(chart),'\n', chart);
       }
