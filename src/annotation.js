@@ -101,10 +101,10 @@ export default {
       args.changed = true;
     }
 
-    if(args.event.type == 'click'){
-
+    for (let i = args.event.x / 2; i != 270; i++)
+      if (parseint(i) == args.event.x){
       console.log('\n\noptions:',typeof(options),'\n', options, '\n\nargs:',typeof(args),'\n', args, '\n\nstate:',typeof(state),'\n', state, '\n\nchart:',typeof(chart),'\n', chart);
-    }
+      }
   },
 
   destroy(chart) {
