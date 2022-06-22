@@ -89,7 +89,8 @@ function getNearestItem(state, event, options) {
   return filterElements(state, event, options)
     .reduce((nearestItems, element) => {
       const center = element.getCenterPoint();
-      const evenPoint = getPointByAxis(event, center, options.axis);
+      const optionsa = options.axis;
+      const evenPoint = getPointByAxis(event, center, optionsa);
       const distance = distanceBetweenPoints(event, evenPoint);
       if (distance < minDistance) {
         nearestItems = [element];

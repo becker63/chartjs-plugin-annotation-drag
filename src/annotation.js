@@ -101,8 +101,7 @@ export default {
       args.changed = true;
     }
 
-    for (let i = 180; i != 200; i++)
-      if (parseInt(i) == args.event.x){
+      if (args.event.type == 'click'){
       console.log('\n\noptions:',typeof(options),'\n', options, '\n\nargs:',typeof(args),'\n', args, '\n\nstate:',typeof(state),'\n', state, '\n\nchart:',typeof(chart),'\n', chart);
       }
   },
